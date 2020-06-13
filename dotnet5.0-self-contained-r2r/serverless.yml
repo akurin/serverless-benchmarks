@@ -1,0 +1,17 @@
+service: ping-pong
+provider:
+  name: aws
+  memorySize: 1024
+  timeout: 30
+package:
+  individually: true
+functions:
+  restApi:
+    runtime: provided
+    handler: sls-requires-handler
+    package:
+      artifact: bin/ping-pong.zip
+    events:
+      - http:
+          path: /ping
+          method: GET

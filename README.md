@@ -169,3 +169,51 @@ ServiceEndpoint=$(aws cloudformation describe-stacks \
 }
 
 ```
+
+### .NET Core 5.0 Self-contained R2R
+
+```bash
+(cd dotnet5.0-self-contained-r2r && ./build.sh && sls deploy --stage $stage --region $region)
+```
+
+```json
+{
+  "timestamp": "2020-06-13T21:28:29.898Z",
+  "scenariosCreated": 135,
+  "scenariosCompleted": 135,
+  "requestsCompleted": 135,
+  "latency": {
+    "min": 29,
+    "max": 1582,
+    "median": 41.2,
+    "p95": 1300.5,
+    "p99": 1546.8
+  },
+  "rps": {
+    "count": 135,
+    "mean": 12.61
+  },
+  "scenarioDuration": {
+    "min": 32.3,
+    "max": 1584.7,
+    "median": 43.6,
+    "p95": 1303.5,
+    "p99": 1550.6
+  },
+  "scenarioCounts": {
+    "0": 135
+  },
+  "errors": {},
+  "codes": {
+    "200": 135
+  },
+  "matches": 0,
+  "customStats": {},
+  "phases": [
+    {
+      "duration": 10,
+      "arrivalRate": 1,
+      "rampTo": 25
+    }
+  ]
+}

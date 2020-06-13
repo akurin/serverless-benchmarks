@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp5.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="5.1.1" />
+        <PackageReference Include="Amazon.Lambda.RuntimeSupport" Version="1.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="bootstrap">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>
