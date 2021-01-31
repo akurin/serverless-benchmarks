@@ -217,3 +217,60 @@ ServiceEndpoint=$(aws cloudformation describe-stacks \
     }
   ]
 }
+```
+### .NET Core 5.0 Container Image
+
+```bash
+(
+cd dotnet5.0-container &&
+dotnet publish --configuration Release &&
+aws ecr get-login-password --region eu-central-1 | podman login --username AWS --password-stdin 573446657092.dkr.ecr.eu-central-1.amazonaws.com &&
+podman build -t pingpong . &&
+podman tag pingpong:latest 573446657092.dkr.ecr.eu-central-1.amazonaws.com/pingpong:latest &&
+podman push 573446657092.dkr.ecr.eu-central-1.amazonaws.com/pingpong:latest -f v2s2 &&
+sls deploy --stage $stage --region $region
+)
+```
+
+```json
+{
+  "timestamp": "2021-01-30T21:39:31.283Z",
+  "scenariosCreated": 139,
+  "scenariosCompleted": 139,
+  "requestsCompleted": 139,
+  "latency": {
+    "min": 54.1,
+    "max": 2375,
+    "median": 61.4,
+    "p95": 1936.2,
+    "p99": 2275.2
+  },
+  "rps": {
+    "count": 139,
+    "mean": 12.36
+  },
+  "scenarioDuration": {
+    "min": 56.6,
+    "max": 2568.7,
+    "median": 64.6,
+    "p95": 1938.9,
+    "p99": 2301.9
+  },
+  "scenarioCounts": {
+    "0": 139
+  },
+  "errors": {},
+  "codes": {
+    "200": 139
+  },
+  "matches": 0,
+  "customStats": {},
+  "phases": [
+    {
+      "duration": 10,
+      "arrivalRate": 1,
+      "rampTo": 25
+    }
+  ]
+}
+```
