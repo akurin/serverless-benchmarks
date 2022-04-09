@@ -8,7 +8,7 @@ package:
   individually: true
 functions:
   restApi:
-    runtime: dotnetcore3.1
+    runtime: dotnet6
     handler: PingPong::PingPong.EntryPoint::FunctionHandlerAsync
     package:
       artifact: bin/ping-pong.zip
