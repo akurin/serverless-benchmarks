@@ -1,0 +1,18 @@
+service: ping-pong
+provider:
+  name: aws
+#  stage: ${opt:stage}
+  memorySize: 1024
+  timeout: 30
+package:
+  individually: true
+functions:
+  restApi:
+    runtime: dotnetcore3.1
+    handler: PingPong::PingPong.EntryPoint::FunctionHandlerAsync
+    package:
+      artifact: bin/ping-pong.zip
+    events:
+      - http:
+          path: /ping
+          method: GET
